@@ -6,6 +6,8 @@ from bd.database import *
 from models.movie import Movie as ModelMovie
 from routers.movie import routerMovie
 from routers.users import login_user
+import os
+import uvicorn
 
 app = FastAPI()
 app.include_router(routerMovie)
@@ -22,3 +24,6 @@ def read_root():
 
 
 
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8000))
+    uvicorn.run('main:app', host='0.0.0.0', port=port)
