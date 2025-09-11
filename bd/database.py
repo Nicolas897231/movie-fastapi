@@ -4,11 +4,10 @@ from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 
-sqliteName = 'movies.sqlite'
-base_dir = os.path.dirname(os.path.realpath(__file__))
-datebaseUrl = f'sqlite:///{os.path.join(base_dir, sqliteName)}'
+DATABASE_URL = "mysql+pymysql://root:as400181@18.221.119.50:3306/movies"
 
-engine = create_engine(datebaseUrl, echo=True)
+
+engine = create_engine(DATABASE_URL, echo=True)
 
 sesion = sessionmaker(bind=engine)
 
